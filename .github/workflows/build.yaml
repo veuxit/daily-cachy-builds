@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set current date as environment variable
-        run: echo "DATE=$(date +'%Y.%m.%d')" >>$GITHUB_ENV
+        run: echo "DATE=$(date +'%Y.%m.%d')" >> "$GITHUB_ENV"
 
       - name: Run build-iso script
         run: bash build-iso
@@ -51,4 +51,3 @@ jobs:
           files: |
             archlinux-${{ env.DATE }}-x86_64.iso
             CHECKSUMS.txt
-      
