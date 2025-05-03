@@ -36,32 +36,34 @@ step() {
     echo -e "$TEXT"
   fi
 
-  echo -e "${BOLD}$(repeat "=" "$(echo "$TEXT" | sed -E 's/\\033[^\\]*m//g' | wc -c)")${RESET}"
+  echo -e "${BOLD}$(repeat "=" "$(echo "$TEXT" | sed -E 's/\033[^\\]*m//g' | wc -c)")${RESET}"
 }
 
 build() {
   step "Creating build directory..." "mkdir -p /tmp/isobuild/airootfs/root"
   step "Adding notes to .zprofile file..." "
-		cat <<-EOL >>/tmp/isobuild/airootfs/root/.zprofile
-			. /usr/share/makepkg/util/message.sh
-			colorize
+    cat <<-EOL >>/tmp/isobuild/airootfs/root/.zprofile
+      . /usr/share/makepkg/util/message.sh
+      colorize
 
-			echo ''
-			msg \"This is an unofficial ISO created by GitHub Actions on $DATE from run ID $GITHUB_RUN_ID\"
-			msg2 \"Check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY#readme for more details\"
-			echo ''
-		EOL
+      echo ''
+      msg \"This is an unofficial ISO created by GitHub Actions on $DATE from run ID $GITHUB_RUN_ID\"
+      msg2 \"Check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY#readme for more details\"
+      echo ''
+    EOL
   "
   step "Updating packages and installing archiso..." "pacman -Syu --noconfirm archiso"
   step "Copying releng profile to build directory..." "cp -r /usr/share/archiso/configs/releng/* /tmp/isobuild"
   step "Building ISO..." "mkarchiso -v -w work/ -o ./ /tmp/isobuild"
+  
+  # Detect the actual ISO filename
+  ISO_NAME=$(ls | grep "archlinux-.*-x86_64.iso" | head -n1)
+
   step "Generating checksums text file..." "
-		cat <<-EOL >CHECKSUMS.txt
-			b2sum  $(b2sum "archlinux-$DATE-x86_64.iso")
-			md5sum  $(md5sum "archlinux-$DATE-x86_64.iso")
-			sha1sum  $(sha1sum "archlinux-$DATE-x86_64.iso")
-			sha256sum  $(sha256sum "archlinux-$DATE-x86_64.iso")
-		EOL
+    b2sum $ISO_NAME > CHECKSUMS.txt
+    md5sum $ISO_NAME >> CHECKSUMS.txt
+    sha1sum $ISO_NAME >> CHECKSUMS.txt
+    sha256sum $ISO_NAME >> CHECKSUMS.txt
   "
 }
 
