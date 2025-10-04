@@ -52,7 +52,7 @@ build() {
       echo ''
     EOL
   "
-  step "Updating packages and installing archiso..." "pacman -Syyu --noconfirm sudo archiso mkinitcpio-archiso git squashfs-tools grub wget"
+  step "Updating packages and installing archiso..." "pacman -Syyu --noconfirm sudo archiso mkinitcpio-archiso git squashfs-tools grub wget zlib-ng"
   step "Cloning latest CachyOS/CachyOS-Live-ISO buildiso..." "git clone --depth=1 https://github.com/CachyOS/CachyOS-Live-ISO.git cachyos-archiso"
   step "Reset pacman keys..." "rm -rf /etc/pacman.d/gnupg/"
   step "Pacman keys 1/5..." "pacman-key --init"
