@@ -60,6 +60,7 @@ build() {
   step "Signing the CachyOS repository key..." "sudo pacman-key --lsign-key F3B607488DB35A47"
   step "Removing pacman databases..." "sudo rm -R /var/lib/pacman/sync/*"
   step "Syncing pacman database..." "pacman -Syy"
+  step "Doing the worst thing ever..." "sed -i 's/SigLevel/SigLevel = Never/g' /etc/pacman.conf"
   step "cding to working directory..." "cd cachyos-archiso"
   step "Building ISO..." "./buildiso.sh -p desktop -v"
   
