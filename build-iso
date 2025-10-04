@@ -52,7 +52,7 @@ build() {
       echo ''
     EOL
   "
-  step "Updating packages and installing archiso..." "pacman -Syu --noconfirm archiso mkinitcpio-archiso git squashfs-tools grub"
+  step "Updating packages and installing archiso..." "pacman -Syu --noconfirm sudo archiso mkinitcpio-archiso git squashfs-tools grub"
   step "Cloning latest CachyOS/CachyOS-Live-ISO buildiso..." "git clone --depth=1 https://github.com/CachyOS/CachyOS-Live-ISO.git cachyos-archiso"
   step "cd to working directory..." "cd cachyos-archiso"
   step "Building ISO..." "./buildiso.sh -p desktop -v"
