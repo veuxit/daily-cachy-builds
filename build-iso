@@ -52,12 +52,13 @@ build() {
       echo ''
     EOL
   "
-  step "Updating packages and installing archiso..." "pacman -Syu --noconfirm archiso"
-  step "Copying releng profile to build directory..." "cp -r /usr/share/archiso/configs/releng/* /tmp/isobuild"
-  step "Building ISO..." "mkarchiso -v -w work/ -o ./ /tmp/isobuild"
+  step "Updating packages and installing archiso..." "pacman -Syu --noconfirm archiso mkinitcpio-archiso git squashfs-tools grub"
+  step "Cloning latest CachyOS/CachyOS-Live-ISO buildiso..." "git clone --depth=1 https://github.com/CachyOS/CachyOS-Live-ISO.git cachyos-archiso"
+  step "cd to working directory..." "cd cachyos-archiso"
+  step "Building ISO..." "./buildiso.sh -p desktop -v"
   
   # Detect the actual ISO filename
-  ISO_NAME=$(ls | grep "archlinux-.*-x86_64.iso" | head -n1)
+  ISO_NAME=$(ls | grep "cachyos-desktop-linux-*.iso" | head -n1)
 
   step "Generating checksums text file..." "
     b2sum $ISO_NAME > CHECKSUMS.txt

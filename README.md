@@ -1,8 +1,9 @@
-# Daily Arch Builds
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/theCode-Breaker/daily-arch-builds/Build%20Arch%20ISO)
-![GitHub all releases](https://img.shields.io/github/downloads/theCode-Breaker/daily-arch-builds/total)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/theCode-Breaker/daily-arch-builds)
+# Daily CachyOS Builds
+![GitHub all releases](https://img.shields.io/github/downloads/veuxit/daily-cachy-builds/total)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/veuxit/daily-cachy-builds)
 
-In this repo, Github Actions runner builds daily Arch Linux ISO with latest packages at 00.00 UTC. [Check releases for builds.](https://github.com/theCode-Breaker/daily-arch-builds/releases)
+In this repo, Github Actions runner builds daily CachyOS ISO with latest packages at 00.00 UTC. [Check releases for builds.](https://github.com/veuxit/daily-cachy-builds/releases)
 
-ISOs are build with ArchISO's `releng` profile, which is default by Arch Linux. So Arch Linux ISOs in here is same with official monthly releases but updated packages. You can check [actions](https://github.com/theCode-Breaker/daily-arch-builds/actions) page for build output, or [workflow file](.github/workflows/build.yaml) for build stages.
+ISOs are build with CachyOS's `desktop` profile, which is default by CachyOS. So CachyOS ISOs in here is same with official monthly releases but updated packages. You can check [actions](https://github.com/veuxit/daily-cachy-builds/actions) page for build output, or [workflow file](.github/workflows/build.yaml) for build stages.
+
+Forked from [adarsh-67r/daily-arch-builds](https://github.com/adarsh-67r/daily-arch-builds)
