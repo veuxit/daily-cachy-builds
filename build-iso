@@ -60,7 +60,6 @@ build() {
   step "Signing the CachyOS repository key..." "sudo pacman-key --lsign-key F3B607488DB35A47"
   step "Removing pacman databases..." "sudo rm -R /var/lib/pacman/sync/*"
   step "Syncing pacman database..." "pacman -Syy"
-  step "Installing zlib-ng directly from CachyOS..." "sudo pacman -U --noconfirm https://cdn77.cachyos.org/repo/x86_64/cachyos/zlib-ng-2.2.5-1-x86_64.pkg.tar.zst"
   step "cding to working directory..." "cd cachyos-archiso"
   step "Building ISO..." "./buildiso.sh -p desktop -v"
   
