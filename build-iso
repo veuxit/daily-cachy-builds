@@ -55,6 +55,10 @@ build() {
   step "Updating packages and installing archiso..." "pacman -Syu --noconfirm sudo archiso mkinitcpio-archiso git squashfs-tools grub"
   step "Cloning latest CachyOS/CachyOS-Live-ISO buildiso..." "git clone --depth=1 https://github.com/CachyOS/CachyOS-Live-ISO.git cachyos-archiso"
   step "Import CachyOS keys..." "pacman-key --recv-keys 882DCFE48E2051D48E2562ABF3B607488DB35A47"
+  step "Pacman keys 1/4..." "pacman-key --init"
+  step "Pacman keys 2/4..." "pacman-key --populate"
+  step "Pacman keys 3/4..." "pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com"
+  step "Pacman keys 4/4..." "pacman-key --lsign-key F3B607488DB35A47"
   step "cd to working directory..." "cd cachyos-archiso"
   step "Building ISO..." "./buildiso.sh -p desktop -v"
   
