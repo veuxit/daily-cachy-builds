@@ -61,9 +61,6 @@ build() {
   step "Pacman keys 4/5..." "pacman-key --lsign-key F3B607488DB35A47"
   step "Pacman keys 5/5..." "rm -R /var/lib/pacman/sync"
   step "Sync pacman database..." "pacman -Syyu"
-  step "Download cachyos-rate-mirrors script..." "wget https://raw.githubusercontent.com/CachyOS/CachyOS-PKGBUILDS/refs/heads/master/cachyos-rate-mirrors/cachyos-rate-mirrors"
-  step "chmod script..." "chmod +x cachyos-rate-mirrors"
-  step "Execute script..." "./cachyos-rate-mirrors"
   step "cd to working directory..." "cd cachyos-archiso"
   step "Building ISO..." "./buildiso.sh -p desktop -v"
   
