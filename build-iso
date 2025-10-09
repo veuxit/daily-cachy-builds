@@ -43,7 +43,7 @@ build() {
   step "Updating packages and installing archiso..." "pacman -Syyuu --noconfirm sudo archiso mkinitcpio-archiso git squashfs-tools grub"
   step "Cloning latest CachyOS/CachyOS-Live-ISO buildiso..." "git clone https://github.com/CachyOS/CachyOS-Live-ISO.git cachyos-archiso"
   step "cding to working directory..." "cd cachyos-archiso"
-  step "Building ISO..." "sudo ./buildiso.sh -p desktop -v"
+  step "Building ISO..." "sudo ./ci.build.sh"
   
   # Detect the actual ISO filename
   ISO_NAME=$(ls cachyos-archiso/out/desktop | grep "cachyos-desktop-linux-*.iso" | head -n1)
