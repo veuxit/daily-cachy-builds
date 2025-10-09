@@ -21,7 +21,6 @@ jobs:
 
     container:
       image: archlinux:latest
-      options: --privileged
 
     steps:
       - uses: actions/checkout@v4
