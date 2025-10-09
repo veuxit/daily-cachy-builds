@@ -20,7 +20,7 @@ jobs:
       contents: write
 
     container:
-      image: cachyos:latest
+      image: cachyos/cachyos:latest
       options: --privileged
 
     steps:
