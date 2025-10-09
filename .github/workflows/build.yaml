@@ -20,7 +20,7 @@ jobs:
       contents: write
 
     container:
-      image: archlinux:latest
+      image: cachyos:latest
       options: --privileged
 
     steps:
