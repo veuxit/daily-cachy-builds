@@ -40,7 +40,7 @@ step() {
 }
 
 build() {
-  step "Installing sudo..." "pacman -S sudo"
+  step "Installing sudo..." "pacman -Sy sudo"
   step "Generating a default secret key..." "sudo pacman-key --init"
   step "Initializing and populating the pacman keyring... " "sudo pacman-key --populate"
   step "Importing the CachyOS repository key..." "sudo pacman-key --recv-keys F3B607488DB35A47 --keyserver keyserver.ubuntu.com"
