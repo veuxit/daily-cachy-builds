@@ -44,9 +44,11 @@ build() {
   step "Cloning latest CachyOS/CachyOS-Live-ISO buildiso..." "git clone https://github.com/CachyOS/CachyOS-Live-ISO.git cachyos-archiso"
   step "cding to working directory..." "cd cachyos-archiso"
   step "Building ISO..." "sudo ./buildiso.sh -p desktop -v"
+  step "What the erm is going on here" "pwd"
+  step "What the erm is going on here pt2" "ls"
   
   # Detect the actual ISO filename
-  ISO_NAME=$(ls */*/* | grep "cachyos-desktop-linux-$DATE.iso" | head -n1)
+  ISO_NAME=$(find . -name '*cachyos*.iso' 2>/dev/null | grep "cachyos-desktop-linux-$DATE.iso" | head -n1)
 
   step "Generating checksums text file..." "
     b2sum $ISO_NAME > CHECKSUMS.txt
