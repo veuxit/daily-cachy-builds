@@ -38,6 +38,7 @@ jobs:
         with:
           name: CachyOS ${{ env.DATE }}
           path: |
+            $ISO_NAME
             cachyos-desktop-linux-${{ env.DATE }}.iso
             CHECKSUMS.txt
 
