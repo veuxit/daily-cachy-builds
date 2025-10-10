@@ -28,12 +28,12 @@ jobs:
 
       - name: Set current date as environment variable
         run: echo "DATE=$(date +'%y%m%d')" >> "$GITHUB_ENV"
-
-      - name: Set iso name
-        run: echo "ISO_NAME=$(find . -name '*cachyos*.iso' 2>/dev/null | grep "cachyos-desktop-linux-$DATE.iso" | head -n1)" >> "$GITHUB_ENV"
-
+        
       - name: Run build-iso script
         run: bash build-iso
+
+      - name: Set iso name 
+        run: echo "ISO_NAME=$(find . -name '*cachyos*.iso' 2>/dev/null | grep "cachyos-desktop-linux-$DATE.iso" | head -n1)" >> "$GITHUB_ENV"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
