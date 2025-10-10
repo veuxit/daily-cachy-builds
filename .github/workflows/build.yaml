@@ -32,8 +32,12 @@ jobs:
       - name: Run build-iso script
         run: bash build-iso
 
-      - name: Set iso name 
+      - name: Find ISO file
         run: echo "ISO_NAME=$(find . -name '*cachyos*.iso' 2>/dev/null | grep "cachyos-desktop-linux-$DATE.iso" | head -n1)" >> "$GITHUB_ENV"
+
+      - name: Find CHECKSUMS file 
+        run: echo "CHECKSUMS_FILE=$(find . -name 'CHECKSUMS.txt' 2>/dev/null | grep "CHECKSUMS.txt" | head -n1)" >> "$GITHUB_ENV"
+
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -42,7 +46,7 @@ jobs:
           name: CachyOS ${{ env.DATE }}
           path: |
             ${{ env.ISO_NAME }}
-            CHECKSUMS.txt
+            ${{ env.CHECKSUMS_FILE }}
 
       - name: Create tag and release
         uses: softprops/action-gh-release@v2
@@ -53,4 +57,5 @@ jobs:
           body_path: CHECKSUMS.txt
           files: |
             ${{ env.ISO_NAME }}
-            CHECKSUMS.txt
+            ${{ env.CHECKSUMS_FILE }}
+            
