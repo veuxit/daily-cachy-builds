@@ -1,4 +1,4 @@
-daily-cachy-builds/cname: Build CachyOS ISO
+name: Build CachyOS ISO
 
 on:
   schedule:
