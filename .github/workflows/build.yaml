@@ -1,4 +1,4 @@
-name: Build CachyOS ISO
+daily-cachy-builds/cname: Build CachyOS ISO
 
 on:
   schedule:
@@ -38,7 +38,7 @@ jobs:
         with:
           name: CachyOS ${{ env.DATE }}
           path: |
-            $ISO_NAME
+            ${{ env.ISO_NAME }}
             cachyos-desktop-linux-${{ env.DATE }}.iso
             CHECKSUMS.txt
 
@@ -50,5 +50,6 @@ jobs:
           tag_name: ${{ env.DATE }}
           body_path: CHECKSUMS.txt
           files: |
+            ${{ env.ISO_NAME }}
             cachyos-desktop-linux-${{ env.DATE }}.iso
             CHECKSUMS.txt
