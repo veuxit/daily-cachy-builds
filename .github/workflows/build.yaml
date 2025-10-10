@@ -54,7 +54,7 @@ jobs:
         with:
           name: CachyOS ${{ env.DATE }}
           tag_name: ${{ env.DATE }}
-          body_path: CHECKSUMS.txt
+          body_path: ${{ env.CHECKSUMS_FILE }}
           files: |
             ${{ env.ISO_NAME }}
             ${{ env.CHECKSUMS_FILE }}
