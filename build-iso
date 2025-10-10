@@ -46,7 +46,7 @@ build() {
   step "Building ISO..." "sudo ./buildiso.sh -p desktop -v"
   
   # Detect the actual ISO filename
-  ISO_NAME=$(ls cachyos-archiso/out/desktop | grep "cachyos-.iso" | head -n1)
+  ISO_NAME=$(ls */*/* | grep "cachyos-.iso" | head -n1)
 
   step "Generating checksums text file..." "
     b2sum $ISO_NAME > CHECKSUMS.txt
